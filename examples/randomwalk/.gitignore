@@ -1,0 +1,10 @@
+output/*
+fig/*
+timer.dat
+report.dat
+sandbox/*
+sandbox-synthesize/*
+randomwalk_report.pdf
+randomwalk_report_slides.pdf
+spux.rpz
+.reprozip-trace/*
