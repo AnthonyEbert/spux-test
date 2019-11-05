@@ -37,7 +37,7 @@ sampler.configure ()
 sampler.init ()
 
 # generate samples from posterior distribution
-sampler (batches = 10000)
+sampler (batches = 100)
 
 # === EXIT FRAMEWORK
 
