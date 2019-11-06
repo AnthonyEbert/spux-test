@@ -7,4 +7,4 @@ replicates = ['1', '2', '3']
 
 inputsets = {}
 for replicate in replicates:
-    inputsets [replicate] = datasets [replicate] .index [0]
+    inputsets [replicate] = lambda : datasets [replicate] () .index [0]

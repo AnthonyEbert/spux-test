@@ -46,15 +46,12 @@ plot.timestamps (keys = timestamps, suffix = '-cherrypicked')
 
 # === remove burnin
 
-samples, infos = loader.tail (samples, infos, batch = 150)
+samples, infos = loader.tail (samples, infos, batch = burnin)
 plot = MatPlotLib (samples, infos, burnin = burnin, tail = burnin)
 plot.MAP ()
 
 # plot autocorrelations
 plot.autocorrelations ()
-
-# compute and report effective sample size (ESS)
-plot.ESS ()
 
 # plot marginal posterior distributions
 plot.posteriors ()
@@ -78,6 +75,9 @@ plot.NSE ('y')
 
 # show metrics
 plot.metrics ()
+
+# report status
+plot.status ()
 
 # generate report
 from spux.report import generate

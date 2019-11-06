@@ -1,13 +1,18 @@
-# === CONNECTOR INITIALIZATION
 
-from spux.executors.mpi4py.connectors import utils
-connector = utils.select ('auto')
+# === BARRIER
 
-# === SAMPLER with attached executors
+from spux import framework
+framework.barrier ()
 
-from script_executors import sampler
+# === INIT FRAMEWORK
 
-# === SAMPLING
+from config import *
+
+# attach the specified number of parallel workers
+model.attach (workers = None)
+likelihood.attach (workers = 2)
+replicates.attach (workers = 2)
+sampler.attach (workers = 2)
 
 # SANDBOX
 # use fast tmpfs
@@ -18,17 +23,25 @@ sandbox = Sandbox (path = '/dev/shm/spux-sandbox')
 from spux.utils.seed import Seed
 seed = Seed (8)
 
-# init executor
-sampler.executor.init (connector)
+# setup SPUX framework
+outputdir = '/cluster/scratch/sukysj/spux-hydro'
+stdoutfile = 'stdout.txt'
+framework.setup (sandbox = sandbox, seed = seed, verbosity = 2, outputdir = outputdir, stdoutfile = stdoutfile)
 
-# setup sampler
-sampler.setup (sandbox = sandbox, verbosity = 2, index = 0, seed = seed, lock = 150)
+# init SPUX framework
+framework.init ()
+
+# === SAMPLING
+
+# configure sampler
+sampler.configure (lock = 50)
 
 # init sampler (use prior for generating starting values)
 sampler.init ()
 
 # generate samples from posterior distribution
-sampler (12)
+sampler (24)
 
-# exit executor
-sampler.executor.exit ()
+# === EXIT FRAMEWORK
+
+framework.exit ()

@@ -1,18 +1,21 @@
-# === SCRIPT
+# === INIT FRAMEWORK
 
-from script import sampler
-
-# === SAMPLING
+from config import *
 
 # SEED
 from spux.utils.seed import Seed
 seed = Seed (8)
 
-# init executor
-sampler.executor.init ()
+# setup SPUX framework
+framework.setup (seed = seed, verbosity = 2)
 
-# setup sampler
-sampler.setup (verbosity=1, index=0, seed=seed)
+# init SPUX framework
+framework.init ()
+
+# === SAMPLING
+
+# configure sampler
+sampler.configure ()
 
 # init sampler (use prior for generating starting values)
 sampler.init ()
@@ -20,5 +23,6 @@ sampler.init ()
 # generate samples from posterior distribution
 sampler (12)
 
-# exit executor
-sampler.executor.exit ()
+# === EXIT FRAMEWORK
+
+framework.exit ()

@@ -1,6 +1,6 @@
 # generate config
-import script_synthetic
-del script_synthetic
+from spux.utils import shell
+shell.importer ('config_synthetic.py')
 
 # plotting class
 from spux.plot.mpl import MatPlotLib
@@ -18,9 +18,9 @@ plot.priors ()
 plot.errors ()
 
 # plot distributions for the initial model values
-# TODO: plot exact values too
 from initial import initial
-plot.distributions (initial, color='dimgray', suffix='-initial')
+exact_initial = exact ['predictions'] .iloc [0]
+plot.distributions (initial, samples = {'exact' : exact_initial}, suffix='-initial')
 
 # generate report
 from spux.report import generate

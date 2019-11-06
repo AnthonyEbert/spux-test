@@ -1,6 +1,6 @@
 # generate config
-import script
-del script
+from spux.utils import shell
+shell.importer ('config.py')
 
 # plotting class
 from spux.plot.mpl import MatPlotLib
@@ -17,6 +17,7 @@ plot.priors ()
 from datasets import datasets
 from error import h
 for name, dataset in datasets.items ():
+    dataset = dataset ()
     xs = dataset ['x'] .copy (deep = 1)
     for index in dataset.index:
         xs.loc [index] = h.inverse (xs.loc [index])
@@ -25,7 +26,10 @@ plot.errors (predictions = datasets)
 
 # plot distributions for the initial model values
 from initial import initial
-plot.distributions (initial, color='dimgray', suffix='-initial')
+plot.distributions (initial, suffix='-initial')
+
+# report status
+plot.status ()
 
 # generate report
 from spux.report import generate

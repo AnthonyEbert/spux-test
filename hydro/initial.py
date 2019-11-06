@@ -22,3 +22,6 @@ distributions ['y'] = stats.lognorm (**transforms.logmeanstd (logm = y0_m, logs 
 
 # construct a tensor distribution for all variables
 initial = Tensor (distributions)
+
+from units import units
+initial.setup (units = units ['observations'])

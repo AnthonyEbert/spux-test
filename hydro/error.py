@@ -5,6 +5,8 @@ from spux.distributions.utils import Concentrate
 from spux.distributions.utils import Transform
 from spux.distributions.tensor import Tensor
 
+from units import units
+
 from spux.processes.precipitation import Precipitation
 from precipitation import precipitation_coefficients
 h = Precipitation (*precipitation_coefficients)
@@ -43,6 +45,7 @@ class Error (object):
 
         # construct a joint distribution for a vector of independent parameters by tensorization
         distribution = Tensor (distributions)
+        distribution.setup (units = units ['observations'])
 
         return distribution
 

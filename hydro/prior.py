@@ -28,3 +28,6 @@ distributions [r'$\sigma_\xi$'] = stats.lognorm (**normal) # [L/(s*m^2)]
 
 # construct a joint distribution for a vector of independent parameters by tensorization
 prior = Tensor (distributions)
+
+from units import units
+prior.setup (units = units ['parameters'])
