@@ -13,8 +13,8 @@ plot = MatPlotLib (samples, infos, exact = exact)
 # plot unsuccessful posteriors
 plot.unsuccessfuls ()
 
-# # plot samples
-# plot.parameters ()
+# plot samples
+plot.parameters ()
 
 # plot evolution of likelihoods
 plot.distances ()
@@ -22,10 +22,19 @@ plot.distances ()
 # plot evolution of acceptances
 plot.acceptances ()
 
+# plot pairwise joint posterior distributions
+plot.posteriors2d (suffix = '-progress')
+
+# plot pairwise joint posterior distribution for selected parameter pairs
+plot.posterior2d ('drift', 'volatility', suffix = '-progress')
+
 # === RESULTS
 
 samples, infos = loader.tail (samples, infos)
 plot = MatPlotLib (samples, infos, exact = exact)
+
+# compute metrics
+plot.metrics ()
 
 # plot marginal posterior distributions
 plot.posteriors ()
@@ -41,14 +50,13 @@ plot.posterior2d ('drift', 'volatility', paths = False, initial = False)
 # plot posterior model predictions including datasets
 plot.predictions ()
 
-# show metrics
-plot.metrics ()
+# plot quantile-quantile comparison of the error and residual distributions
+plot.QQ ()
 
-# delete results
-
-del plot
-del samples
-del infos
+# # delete results
+# del plot
+# del samples
+# del infos
 
 # # === PERFORMANCE
 
@@ -71,6 +79,10 @@ del infos
 # # timestamps += ["errors", "errors sync", "resample", "resample sync"]
 # # plot.timestamps (keys = timestamps, suffix = '-select', batch = 'first')
 # # plot.timestamps (keys = timestamps, suffix = '-select', batch = 'last')
+
+# === STATUS
+
+plot.status ()
 
 # === REPORT
 

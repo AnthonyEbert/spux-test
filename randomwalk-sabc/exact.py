@@ -1,7 +1,7 @@
 from spux.io import loader
 
 # exact parameters
-parameters = loader.load_dict ('parameters.dat')
+parameters = loader.load_dict ('exact_parameters.dat')
 
 # exact predictions
 predictions = loader.load_csv ('datasets/predictions.dat')

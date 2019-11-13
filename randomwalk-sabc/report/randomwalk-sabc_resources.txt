@@ -1,9 +1,0 @@
-====================================================================================================
-Required computational resources                                                                    
-====================================================================================================
-Component | Class      | Task          | Executor       | manager | workers | resources | cumulative
---------- + ---------- + ------------- + -------------- + ------- + ------- + --------- + ----------
-Model     | Randomwalk | <application> | SerialModel    |       0 |       1 |         1 |          1
-Distance  | Euclidean  | Randomwalk    | SerialEnsemble |       0 |       1 |         1 |          1
-Sampler   | SABC       | Euclidean     | SerialPool     |       0 |       1 |         1 |          1
-====================================================================================================

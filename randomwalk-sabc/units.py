@@ -6,6 +6,7 @@ units = {}
 units ['parameters'] = {}
 units ['parameters'] ['drift'] = '$m/s$'
 units ['parameters'] ['volatility'] = r'$ms^{-1/2}$'
+units ['parameters'] ['error'] = '$m$'
 
 # observations
 units ['observations'] = {}

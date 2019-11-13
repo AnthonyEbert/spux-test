@@ -8,9 +8,8 @@ framework.barrier ()
 from config import *
 
 # attach the specified number of parallel workers
-model.attach (workers = None)
 distance.attach (workers = 1)
-sampler.attach (workers = 50)
+sampler.attach (workers = 5)
 
 # SANDBOX
 # use fast tmpfs
@@ -37,7 +36,7 @@ sampler.configure ()
 sampler.init ()
 
 # generate samples from posterior distribution
-sampler (batches = 100)
+sampler (batches = 3)
 
 # === EXIT FRAMEWORK
 

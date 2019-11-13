@@ -13,10 +13,16 @@ plot.dataset ()
 # plot marginal prior distributions
 plot.priors ()
 
+# plot marginal error model distributions
+plot.errors ()
+
 # plot marginal prior distributions for the initial model values
 from inputset import inputset
 exact_initial = exact ['predictions'] .iloc [0]
 plot.distributions (inputset ['initial'], samples = {'exact' : exact_initial}, suffix = '-initial')
+
+# report status
+plot.status ()
 
 # generate report
 from spux.report import generate
